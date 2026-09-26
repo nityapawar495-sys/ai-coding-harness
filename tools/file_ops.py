@@ -30,3 +30,14 @@ def list_repository_files(base_dir: str = ".") -> list:
                 code_files.append(os.path.join(root, file))
                 
     return code_files
+if __name__ == "__main__":
+    print("=== Testing File Ops Tool ===")
+    
+    # Test listing repository files
+    files = list_repository_files()
+    print(f"Discovered repository files: {files}")
+    
+    # Test reading main.py
+    if "main.py" in files or os.path.exists("main.py"):
+        content = read_file("main.py")
+        print(f"\nSuccessfully read main.py (first 60 chars): {content[:60]}...")
